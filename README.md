@@ -1,4 +1,5 @@
 Использовал стек:
+
     Python 3.13 + Django 5.2 + DRF
 
     PostgreSQL 17
@@ -18,22 +19,19 @@
 Использование Makefile (рекомендуется)
 
 Если у вас установлена утилита make, запуск выполняется двумя командами:
-code Bash
 
-make build          # Сборка образов
-make up             # Запуск контейнеров в фоне
 
-Без использования make (напрямую через Docker)
+    make build          # Сборка образов
+    make up             # Запуск контейнеров в фоне
+
 
 Если make не установлен, используйте стандартные команды Docker Compose (учитывая путь к конфигу):
 
     Сборка:
-    code Bash
 
     docker compose -f docker/docker-compose.prod.yaml --env-file .env build
 
     Запуск:
-    code Bash
 
     docker compose -f docker/docker-compose.prod.yaml --env-file .env up -d
 
@@ -50,20 +48,21 @@ make up             # Запуск контейнеров в фоне
 
 В проекте написаны автоматические тесты, покрывающие создание структур, каскадное удаление и валидацию циклов.
 
-Запуск через Makefile:
-code Bash
 
-make test
+    Запуск через Makefile:
 
-Запуск без make:
-code Bash
 
-docker compose -f docker/docker-compose.prod.yaml --env-file .env exec web pytest -v
+    make test
+
+    Запуск без make:
+
+
+    docker compose -f docker/docker-compose.prod.yaml --env-file .env exec web pytest -v
 
 
 Для создания новых миграций (если вы изменили модели):
-code Bash
 
-docker compose -f docker/docker-compose.prod.yaml --env-file .env exec web python web/manage.py makemigrations
 
-docker compose -f docker/docker-compose.prod.yaml --env-file .env exec web python web/manage.py migrate
+    docker compose -f docker/docker-compose.prod.yaml --env-file .env exec web python web/manage.py makemigrations
+
+    docker compose -f docker/docker-compose.prod.yaml --env-file .env exec web python web/manage.py migrate
